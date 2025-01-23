@@ -1,7 +1,11 @@
 # Notes
+## Sources
+You can just leverage the default git source if you want to vendor some charts.
+
+
 ## Commands
 ### Bootstrap command
-```
+```bash
 flux bootstrap github \
 --token-auth \
 --owner=xssxrt \
@@ -13,9 +17,19 @@ flux bootstrap github \
 --repository=lain \
 --path=clusters/lab
 ```
+### Create flux resource 
+```bash
+flux create hr cloudnative-pg \
+--source=GitRepository/flux-system \
+--interval=10m \
+--chart=charts/vendor/cloudnative-pg/ \
+--target-namespace=cloudnative-pg \
+--create-target-namespace=true \
+--export > release.yaml
+```
 
 ### SOPS - show diffs in cleartext w/ git
-```
+```bash
 git config diff.sopsdiffer.textconv "sops decrypt"
 ```
 NB: `.gitattributes` needs to be updated if a different serialzation langauge also needs to have secrets.
