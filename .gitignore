@@ -1,0 +1,13 @@
+*
+!.gitattributes
+!.gitignore
+!.github/
+!.github/**
+!readme.md
+!charts/
+!charts**
+!docs/
+!docs/**
+!cluster/
+!cluster/**
+
