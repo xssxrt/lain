@@ -3,6 +3,7 @@
 LARP as Lain
 ## Hardware
 2x 2400GE PRO, 32GB memory
+
 1x 8500T, 64GB memory
 
 ## Tech
