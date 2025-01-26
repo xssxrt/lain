@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: charts/vendor/cloudnative-pg/
+      chart: ../../../charts/vendor/cloudnative-pg/
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: GitRepository
