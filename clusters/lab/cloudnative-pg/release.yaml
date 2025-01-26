@@ -1,9 +1,8 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: cloudnative-pg
-  namespace: flux-system
+  name: cnpg
+  namespace: cnpg-system
 spec:
   chart:
     spec:
@@ -13,5 +12,4 @@ spec:
         kind: GitRepository
         name: flux-system
   interval: 1m0s
-  targetNamespace: cloudnative-pg
-
+  targetNamespace: cnpg-system
