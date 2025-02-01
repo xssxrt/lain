@@ -1,8 +1,28 @@
 ipv4NativeRoutingCIDR: "10.42.0.0/16"
 ipam:
+  mode: "kubernetes"
   operator:
     clusterPoolIPv4PodCIDRList: ["10.42.0.0/16"]
 ingressController:
   enabled: true
   loadbalancerMode: dedicated
+
+envoy:
+  enabled: true
+  service:
+    enabled: true
+    type: LoadBalancer
+
+# not sure about these
+kubeProxyReplacement: true
+hostServices:
+  enabled: true
+externalIPs:
+  enabled: true
+nodePort:
+  enabled: true
+hostPort:
+  enabled: true
+loadBalancer:
+  algorithm: "maglev"
 
