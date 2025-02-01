@@ -15,6 +15,7 @@ spec:
   valuesFrom:
   - kind: ConfigMap
     name: cilium-values
+    valuesKey: values.yaml  # Explicitly specify key (optional but recommended)
   interval: 1m0s
   targetNamespace: kube-system
 
