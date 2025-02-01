@@ -2,4 +2,7 @@ ipv4NativeRoutingCIDR: "10.42.0.0/16"
 ipam:
   operator:
     clusterPoolIPv4PodCIDRList: ["10.42.0.0/16"]
+ingressController:
+  enabled: true
+  loadbalancerMode: dedicated
 
