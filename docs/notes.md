@@ -4,6 +4,17 @@ You can just leverage the default git source if you want to vendor some charts.
 
 
 ## Commands
+### kubeadm
+```bash
+sudo kubeadm init \
+--skip-phases=addon/kube-proxy \
+--pod-network-cidr=10.42.0.0/16
+```
+### cilium
+cilium install \
+--set ipam.operator.clusterPoolIPv4PodCIDRList="10.42.0.0/16" \
+--set ipv4NativeRoutingCIDR=10.42.0.0/16
+
 ### Bootstrap command
 ```bash
 flux bootstrap github \
