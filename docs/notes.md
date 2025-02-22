@@ -13,7 +13,9 @@ sudo kubeadm init \
 ### cilium
 cilium install \
 --set ipam.operator.clusterPoolIPv4PodCIDRList="10.42.0.0/16" \
---set ipv4NativeRoutingCIDR=10.42.0.0/16
+--set ipv4NativeRoutingCIDR=10.42.0.0/16 \
+--set ingressController.enabled=true \
+--set ingressController.loadbalancerMode=dedicated
 
 ### Bootstrap command
 ```bash
@@ -26,7 +28,8 @@ flux bootstrap github \
 --private=false \
 --personal=true \
 --repository=lain \
---path=clusters/lab
+--path=clusters/lab \
+--toleration-keys "node-role.kubernetes.io/control-plane"
 ```
 ### Create flux resource 
 ```bash
