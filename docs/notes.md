@@ -9,14 +9,20 @@ You can just leverage the default git source if you want to vendor some charts.
 sudo kubeadm init \
 --skip-phases=addon/kube-proxy \
 --pod-network-cidr=10.42.0.0/16
+
+sudo cat /etc/kubernetes/admin.conf > ~/.kube/config
 ```
 ### cilium
+```bash
 cilium install \
 --set ipam.operator.clusterPoolIPv4PodCIDRList="10.42.0.0/16" \
 --set ipv4NativeRoutingCIDR=10.42.0.0/16 \
 --set ingressController.enabled=true \
 --set ingressController.loadbalancerMode=dedicated
 
+#might need to restart crio
+sudo systemctl restart crio
+```
 ### Bootstrap command
 ```bash
 flux bootstrap github \
@@ -31,6 +37,10 @@ flux bootstrap github \
 --path=clusters/lab \
 --toleration-keys "node-role.kubernetes.io/control-plane"
 ```
+
+### Add worker node
+kubeadm create token --print-join-command
+
 ### Create flux resource 
 ```bash
 flux create hr cloudnative-pg \
